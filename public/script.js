@@ -1,5 +1,6 @@
-
-
+var coordlat = 51.962303020756345
+var coordlng = 7.624940872192383
+var markersLayer = L.featureGroup()
 // jshint esversion: 6
 
 /**
@@ -10,6 +11,7 @@
 // load map
 var map2 = L.map('map2').setView([51.9606649, 7.6261347], 11);
 
+getStations();
 // load OSM-Layer
 var osmLayer =new L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png',   
 {attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'});
@@ -453,3 +455,65 @@ switch(true){
     return text
 }
 
+
+
+function getStations(){
+  // call developers HERE API to get stations nearby
+  $.ajax({  url: "https://transit.hereapi.com/v8/stations?in="+coordlat+","+coordlng, 
+  dataType: "json",
+  // token from token.js
+  data: {apiKey: api_key, },     
+  type: "GET",
+  async: false,
+  success: function(data){
+    stationsToMap(data.stations);
+  }  
+ });
+ }
+
+
+
+function stationsToMap(stations){
+  
+  stations.forEach(station => {
+  var id = station.place.id;
+  var oneMarker = L.marker([station.place.location.lat, station.place.location.lng]);
+  oneMarker.id = id;
+  oneMarker.addTo(markersLayer);
+  })
+  markersLayer.addTo(map2);
+}
+
+markersLayer.on("click", markerOnClick);
+
+function markerOnClick(e) {
+  var clickedMarker = e.layer.id;
+  getDepartures(clickedMarker);
+}
+
+
+function getDepartures(ID){
+  // call developers HERE API to get stations nearby
+  $.ajax({  url: "https://transit.hereapi.com/v8/departures?ids="+ID, 
+  dataType: "json",
+  // token from token.js
+  data: {apiKey: api_key},     
+  type: "GET",
+  async: false,
+  success: function(data){
+    departuresToTable(data.boards);
+    }
+  })
+}
+
+function departuresToTable(departures){
+  console.log(departures);
+  departures.forEach(departure => {
+    (departure.departures).forEach(dep => {
+      console.log(dep.transport.name, dep.time);
+      //hier die Tabelle generieren
+    });
+  })   
+}
+
+ 
