@@ -38,9 +38,9 @@ td, th {
   width: 120px
 }
 
-tr:nth-child(even) {
+/* tr:nth-child(even) {
   background-color: #dddddd;
-}
+} */
 
 #map { position: relative;
   /*  margin: 1em auto; */ 
@@ -60,3 +60,9 @@ tr:nth-child(even) {
      }
 
 
+     td {border: 1px #DDD solid; padding: 5px; cursor: pointer;}
+
+     .selected {
+         background-color: brown;
+         color: #FFF;
+     }

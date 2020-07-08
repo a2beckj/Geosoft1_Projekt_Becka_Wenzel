@@ -1,5 +1,8 @@
-var coordlat = 51.962303020756345
-var coordlng = 7.624940872192383
+//var coordlat = 51.90174605758568
+//var coordlng = 7.669379711151122
+
+var coordlat = 51.95579743091287
+var coordlng = 7.6264750957489005
 var markersLayer = L.featureGroup()
 // jshint esversion: 6
 
@@ -455,7 +458,7 @@ switch(true){
     return text
 }
 
-
+//______________________________________________________________________________
 
 function getStations(){
   // call developers HERE API to get stations nearby
@@ -472,7 +475,10 @@ function getStations(){
  }
 
 
-
+/**
+ * @desc This function takes the next stations and displays them as leaflet markers.
+ * Then it calls the 
+ */
 function stationsToMap(stations){
   
   stations.forEach(station => {
@@ -488,6 +494,7 @@ markersLayer.on("click", markerOnClick);
 
 function markerOnClick(e) {
   var clickedMarker = e.layer.id;
+  //clickedMarker.bindPopup(e.layer.name);
   getDepartures(clickedMarker);
 }
 
@@ -507,13 +514,55 @@ function getDepartures(ID){
 }
 
 function departuresToTable(departures){
-  console.log(departures);
+  
+  
+  var table = document.getElementById("table");
+  
+  //clears the existing table except the head row
+  for (var i = table.rows.length - 1; i > 0; i--){
+      table.deleteRow(i); }
+
   departures.forEach(departure => {
+    
+    //print name of clicked Busstop
+    var busstop = departure.place.name;
+    $('#busstop').text(busstop);
+    
     (departure.departures).forEach(dep => {
-      console.log(dep.transport.name, dep.time);
-      //hier die Tabelle generieren
+      
+      // attach new row below existing
+      var row = table.insertRow(-1); 
+      
+      // insert cells in new row
+      var Line = row.insertCell(0);
+      var Direction = row.insertCell(1)
+      var Time = row.insertCell(2);
+
+      // insert values into cell
+      Line.innerHTML = dep.transport.name;
+      Direction.innerHTML = dep.transport.headsign;
+      Time.innerHTML = dep.time;
+    });
+    // Highlight cells and extract values of cells
+    // source: http://jsfiddle.net/65JPw/2/
+    $("#table tr").click(function(){
+      //console.log("table clicked")
+      $(this).addClass('selected').siblings().removeClass('selected');    
+      var value=$(this).find('td:first').html();
+      //console.log(value);    
+    });
+    
+    // Hier übergeben an MongoDB
+    $('.ok').on('click', function(e){
+      var finalSelection = ("line: ")+($("#table tr.selected td:first").html());
+      toMongo(finalSelection);
+       //alert($("#table tr.selected td:first").html());
     });
   })   
+}
+
+function toMongo(ride){
+  console.log(ride);
 }
 
  
