@@ -187,9 +187,9 @@ res.json(result);
 
 //__________________________________________________________________________________________________________
 
-app.get("/projekt", (req, res) => {
+app.get("/rides", (req, res) => {
   // find all
-  app.locals.db.collection('projekt').find({}).toArray((error, result) => {
+  app.locals.db.collection('rides').find({}).toArray((error, result) => {
   if(error){
     console.dir(error);
   }
@@ -197,10 +197,10 @@ app.get("/projekt", (req, res) => {
   });
   });
   
-  app.get("/projekt", (req, res) => {
+  app.get("/rides", (req, res) => {
   // find item
-  console.log("get projekt " + req.query._id);
-  app.locals.db.collection('projekt').find({_id:new mongodb.ObjectID(req.query._id)}).toArray((error, result) => {
+  console.log("get rides " + req.query._id);
+  app.locals.db.collection('rides').find({_id:new mongodb.ObjectID(req.query._id)}).toArray((error, result) => {
   if(error){
     console.dir(error);
   }
@@ -208,11 +208,11 @@ app.get("/projekt", (req, res) => {
   });
   });
   
-  app.post("/projekt", (req, res) => {
+  app.post("/rides", (req, res) => {
   // insert item
-  console.log("insert projekt ");
+  console.log("insert rides ");
   console.log(JSON.stringify(req.body));
-  app.locals.db.collection('projekt').insertOne(req.body, (error, result) => {
+  app.locals.db.collection('rides').insertOne(req.body, (error, result) => {
   if(error){
     console.dir(error);
     
@@ -221,13 +221,13 @@ app.get("/projekt", (req, res) => {
   });
   });
   
-  app.put("/projekt", (req, res) => {
+  app.put("/rides", (req, res) => {
   // update item
   //console.log("update item " + req.body);
   let id = req.body._id;
   //delete req.body._id;
   console.log(req.body); // => { name:req.body.name, description:req.body.description }
-  app.locals.db.collection('projekt').updateOne({_id:new mongodb.ObjectID(id)}, {$set: req.body.geoJSON}, (error, result) => {
+  app.locals.db.collection('rides').updateOne({_id:new mongodb.ObjectID(id)}, {$set: req.body.geoJSON}, (error, result) => {
   if(error){
     console.dir(error);
   }
@@ -235,11 +235,11 @@ app.get("/projekt", (req, res) => {
   });
   });
   
-  app.delete("/projekt", (req, res) => {
+  app.delete("/rides", (req, res) => {
   // delete item
   console.log("delete item " + req.body._id);
   let objectId = "ObjectId(" + req.body._id + ")";
-  app.locals.db.collection('projekt').deleteOne({_id:new mongodb.ObjectID(req.body._id)}, (error, result) => {
+  app.locals.db.collection('rides').deleteOne({_id:new mongodb.ObjectID(req.body._id)}, (error, result) => {
   if(error){
     console.dir(error);
   }

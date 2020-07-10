@@ -77,7 +77,7 @@ function checkUsersRegister(email_reg, pass_reg){
           var doctor = true;}
         else { var doctor = false}; 
       // input user to MongoDB
-        inputUserToMongo(email_reg, pass_reg, JSON.stringify(doctor))
+        inputUserToMongo(email_reg, pass_reg, doctor)
       }
     });
   
@@ -131,13 +131,13 @@ function checkUsersSubmit(users, email, pass){
 function openApp(email, doctor){
   console.log(email, doctor);
   // if user is a doctor
-  if (doctor){
+  if (doctor == true){
     localStorage.setItem('user', email);
-    //location.replace("http://localhost:3000/page1")
+    location.replace("http://localhost:3000/page1")
   }
   // if user is not a doctor
   else {
     localStorage.setItem('user', email);
-    //location.replace("http://localhost:3000/pag2")
+    location.replace("http://localhost:3000/pag2")
   }
 }

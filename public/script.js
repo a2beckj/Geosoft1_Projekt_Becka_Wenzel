@@ -570,10 +570,15 @@ function departuresToTable(departures){
  * @desc This function loads the input from the textarea into MongoDB
  */
 function inputRidesToMongo(user, line, busstop, timestamp){
+  console.log(line);
+  if(line == undefined){
+    alert('Bitte zuerst eine Fahrt wählen');
+    throw new Error ('keine fahrt gewählt')
+  }
   // attach to server and post locations from textarea to MongoDB
-  $.ajax({  url: "//localhost:3000/projekt",       
+  $.ajax({  url: "//localhost:3000/rides",       
             type: "POST",
-            data: {user: user, line: line, busstop: busstop, time: timestamp},
+            data: {user: user, line: line, busstop: busstop, time: timestamp, risk: 'no'},
             success: function(x){
               console.log("eingefügt!")
             }
