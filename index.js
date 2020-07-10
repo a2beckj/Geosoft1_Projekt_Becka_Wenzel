@@ -96,7 +96,7 @@ try {
 // Use connect method to the mongo-client with the mongod-service
 //                      and attach connection and db reference to the app
 app.locals.dbConnection = await mongodb.MongoClient.connect("mongodb://localhost:27017", { useNewUrlParser: true });
-app.locals.db = await app.locals.dbConnection.db("itemdb");
+app.locals.db = await app.locals.dbConnection.db("geosoft1");
 console.log("Using db: " + app.locals.db.databaseName);
 } catch (error) {
 console.dir(error);
@@ -119,11 +119,15 @@ app.get("/pag2", (req, res) => {
 res.sendFile(__dirname + "/public/indexpublic.html");
 });
 
+app.get("/userControl", (req, res) => {
+  res.sendFile(__dirname + "/public/userControl.html");
+});
+
 // routes for get, post, put, and delete
 
-app.get("/item", (req, res) => {
+app.get("/user", (req, res) => {
 // find all
-app.locals.db.collection('item').find({}).toArray((error, result) => {
+app.locals.db.collection('user').find({}).toArray((error, result) => {
 if(error){
   console.dir(error);
 }
@@ -131,10 +135,10 @@ res.json(result);
 });
 });
 
-app.get("/item", (req, res) => {
+app.get("/user", (req, res) => {
 // find item
-console.log("get item " + req.query._id);
-app.locals.db.collection('item').find({_id:new mongodb.ObjectID(req.query._id)}).toArray((error, result) => {
+console.log("get user " + req.query._id);
+app.locals.db.collection('user').find({_id:new mongodb.ObjectID(req.query._id)}).toArray((error, result) => {
 if(error){
   console.dir(error);
 }
@@ -142,11 +146,11 @@ res.json(result);
 });
 });
 
-app.post("/item", (req, res) => {
+app.post("/user", (req, res) => {
 // insert item
-console.log("insert item ");
+console.log("insert user ");
 console.log(JSON.stringify(req.body));
-app.locals.db.collection('item').insertOne(req.body, (error, result) => {
+app.locals.db.collection('user').insertOne(req.body, (error, result) => {
 if(error){
   console.dir(error);
   
@@ -155,13 +159,13 @@ res.json(result);
 });
 });
 
-app.put("/item", (req, res) => {
+app.put("/user", (req, res) => {
 // update item
 //console.log("update item " + req.body);
 let id = req.body._id;
 //delete req.body._id;
 console.log(req.body); // => { name:req.body.name, description:req.body.description }
-app.locals.db.collection('item').updateOne({_id:new mongodb.ObjectID(id)}, {$set: req.body.geoJSON}, (error, result) => {
+app.locals.db.collection('user').updateOne({_id:new mongodb.ObjectID(id)}, {$set: req.body.geoJSON}, (error, result) => {
 if(error){
   console.dir(error);
 }
@@ -169,17 +173,80 @@ res.json(result);
 });
 });
 
-app.delete("/item", (req, res) => {
+app.delete("/user", (req, res) => {
 // delete item
 console.log("delete item " + req.body._id);
 let objectId = "ObjectId(" + req.body._id + ")";
-app.locals.db.collection('item').deleteOne({_id:new mongodb.ObjectID(req.body._id)}, (error, result) => {
+app.locals.db.collection('user').deleteOne({_id:new mongodb.ObjectID(req.body._id)}, (error, result) => {
 if(error){
   console.dir(error);
 }
 res.json(result);
 });
 });
+
+//__________________________________________________________________________________________________________
+
+app.get("/projekt", (req, res) => {
+  // find all
+  app.locals.db.collection('projekt').find({}).toArray((error, result) => {
+  if(error){
+    console.dir(error);
+  }
+  res.json(result);
+  });
+  });
+  
+  app.get("/projekt", (req, res) => {
+  // find item
+  console.log("get projekt " + req.query._id);
+  app.locals.db.collection('projekt').find({_id:new mongodb.ObjectID(req.query._id)}).toArray((error, result) => {
+  if(error){
+    console.dir(error);
+  }
+  res.json(result);
+  });
+  });
+  
+  app.post("/projekt", (req, res) => {
+  // insert item
+  console.log("insert projekt ");
+  console.log(JSON.stringify(req.body));
+  app.locals.db.collection('projekt').insertOne(req.body, (error, result) => {
+  if(error){
+    console.dir(error);
+    
+  }
+  res.json(result);
+  });
+  });
+  
+  app.put("/projekt", (req, res) => {
+  // update item
+  //console.log("update item " + req.body);
+  let id = req.body._id;
+  //delete req.body._id;
+  console.log(req.body); // => { name:req.body.name, description:req.body.description }
+  app.locals.db.collection('projekt').updateOne({_id:new mongodb.ObjectID(id)}, {$set: req.body.geoJSON}, (error, result) => {
+  if(error){
+    console.dir(error);
+  }
+  res.json(result);
+  });
+  });
+  
+  app.delete("/projekt", (req, res) => {
+  // delete item
+  console.log("delete item " + req.body._id);
+  let objectId = "ObjectId(" + req.body._id + ")";
+  app.locals.db.collection('projekt').deleteOne({_id:new mongodb.ObjectID(req.body._id)}, (error, result) => {
+  if(error){
+    console.dir(error);
+  }
+  res.json(result);
+  });
+  });
+  
 
 
 
@@ -241,6 +308,6 @@ router.get('/logout',(req,res) => {
 
 app.use('/', router);
 
-app.listen(process.env.PORT || 3000,() => {
-  console.log(`App Started on PORT ${process.env.PORT || 3000}`);
-});
+/* app.listen(process.env.PORT || 4000,() => {
+  console.log(`App Started on PORT ${process.env.PORT || 4000}`);
+}); */

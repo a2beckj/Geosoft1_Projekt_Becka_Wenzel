@@ -1,5 +1,7 @@
 //var coordlat = 51.90174605758568
-//var coordlng = 7.669379711151122
+//var coordlng = 7.66937971115112
+var username;
+var doc;
 
 var coordlat = 51.95579743091287
 var coordlng = 7.6264750957489005
@@ -461,6 +463,7 @@ switch(true){
 //______________________________________________________________________________
 
 function getStations(){
+  
   // call developers HERE API to get stations nearby
   $.ajax({  url: "https://transit.hereapi.com/v8/stations?in="+coordlat+","+coordlng, 
   dataType: "json",
@@ -480,7 +483,7 @@ function getStations(){
  * Then it calls the 
  */
 function stationsToMap(stations){
-  
+  console.log(stations)
   stations.forEach(station => {
   var id = station.place.id;
   var oneMarker = L.marker([station.place.location.lat, station.place.location.lng]);
@@ -514,16 +517,13 @@ function getDepartures(ID){
 }
 
 function departuresToTable(departures){
-  
-  
   var table = document.getElementById("table");
-  
+  console.log(departures);
   //clears the existing table except the head row
   for (var i = table.rows.length - 1; i > 0; i--){
       table.deleteRow(i); }
 
   departures.forEach(departure => {
-    
     //print name of clicked Busstop
     var busstop = departure.place.name;
     $('#busstop').text(busstop);
@@ -543,6 +543,7 @@ function departuresToTable(departures){
       Direction.innerHTML = dep.transport.headsign;
       Time.innerHTML = dep.time;
     });
+
     // Highlight cells and extract values of cells
     // source: http://jsfiddle.net/65JPw/2/
     $("#table tr").click(function(){
@@ -554,15 +555,30 @@ function departuresToTable(departures){
     
     // Hier übergeben an MongoDB
     $('.ok').on('click', function(e){
-      var finalSelection = ("line: ")+($("#table tr.selected td:first").html());
-      toMongo(finalSelection);
+      var line = ($("#table tr.selected td:first").html());
+      var timestamp = ($("#table tr.selected td:last").html());
+      var user = localStorage.getItem('user');
+
+      inputRidesToMongo(user, line, busstop, timestamp);
        //alert($("#table tr.selected td:first").html());
     });
   })   
 }
 
-function toMongo(ride){
-  console.log(ride);
-}
 
+/**
+ * @desc This function loads the input from the textarea into MongoDB
+ */
+function inputRidesToMongo(user, line, busstop, timestamp){
+  // attach to server and post locations from textarea to MongoDB
+  $.ajax({  url: "//localhost:3000/projekt",       
+            type: "POST",
+            data: {user: user, line: line, busstop: busstop, time: timestamp},
+            success: function(x){
+              console.log("eingefügt!")
+            }
+          })
+}  
+
+ 
  
