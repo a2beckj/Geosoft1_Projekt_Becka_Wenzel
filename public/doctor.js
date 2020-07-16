@@ -56,6 +56,7 @@ function changeRiskByUser(ride, risk){
     data:{_id: ride._id, risk: risk},
     success: function(){
              console.log("Feature aktualisiert");
+             alert("Risikostatus für Nutzer geändert");
     }
   })
 }
@@ -168,6 +169,7 @@ function changeRiskByRide(ride){
     data:{_id: ride._id, risk: 'yes'},
     success: function(){
              console.log("Feature aktualisiert");
+             alert("Fahrt als Risiko markiert!");
     }
   })
 }

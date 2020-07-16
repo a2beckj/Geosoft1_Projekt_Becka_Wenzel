@@ -1,10 +1,3 @@
-//var coordlat = 51.90174605758568
-//var coordlng = 7.66937971115112
-var username;
-var doc;
-
-var coordlat = 51.95579743091287
-var coordlng = 7.6264750957489005
 var markersLayer = L.featureGroup()
 // jshint esversion: 6
 
@@ -117,9 +110,8 @@ window.onload = function checkRisk(){
 
 
 function getStations(location){
-  console.log(location[1]);
-  console.log(coordlat);
-  
+  var loc = L.circleMarker([location[1], location[0]]).addTo(map2);
+  centerLeafletMapOnMarker(map2, loc);
   
   // call developers HERE API to get stations nearby
   $.ajax({  url: "https://transit.hereapi.com/v8/stations?in="+location[1]+","+location[0], 
@@ -246,6 +238,7 @@ function inputRidesToMongo(user, line, busstop, location, timestamp){
             data: {user: user, line: line, busstop: busstop, coordinates:location, time: timestamp, risk: 'no'},
             success: function(x){
               console.log("eingefügt!")
+              alert('Fahrt gespeichert!')
             }
           })
 }  
