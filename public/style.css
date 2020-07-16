@@ -58,7 +58,15 @@ td, th {
       /* width: 520px; */
       float: left;
      }
-
+#mapDoc {
+  position: relative;
+  /*  margin: 1em auto; */ 
+   height: 400px;
+   width: 100%;
+   /* width: 520px; */
+   float: left;
+  }
+}
 
      td {border: 1px #DDD solid; padding: 5px; cursor: pointer;}
 
@@ -66,3 +74,13 @@ td, th {
          background-color: brown;
          color: #FFF;
      }
+
+     .highlightHistoric{
+      background-color: brown;
+      color: #FFF;
+     }
+
+     input {
+      display: block;
+      width: auto;
+  }

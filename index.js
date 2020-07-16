@@ -108,15 +108,16 @@ console.dir(error);
 
 // db is now available and we can continue with the webapp
 
+app.get("/doctor", (req, res) => {
+  res.sendFile(__dirname + "/public/doctor.html");
+  });
 
-
-
-app.get("/page1", (req, res) => {
-res.sendFile(__dirname + "/public/geoJson.html");
+app.get("/userRisk", (req, res) => {
+res.sendFile(__dirname + "/public/userRiskInspection.html");
 });
 
-app.get("/pag2", (req, res) => {
-res.sendFile(__dirname + "/public/indexpublic.html");
+app.get("/userInspect", (req, res) => {
+res.sendFile(__dirname + "/public/userSelection.html");
 });
 
 app.get("/userControl", (req, res) => {
@@ -222,6 +223,21 @@ app.get("/rides", (req, res) => {
   });
   
   app.put("/rides", (req, res) => {
+    // update item
+    console.log("update item " + req.body._id);
+    let id = req.body._id;
+    delete req.body._id;
+    console.log(req.body); // => { name:req.body.name, description:req.body.description }
+    app.locals.db.collection('rides').updateOne({_id:new mongodb.ObjectID(id)}, {$set: req.body}, (error, result) => {
+      if(error){
+        console.dir(error);
+      }
+      res.json(result);
+    });
+  });
+/*   app.put("/rides", (req, res) => res.send("update item")); */
+
+ /*  app.put("/rides", (req, res) => {
   // update item
   //console.log("update item " + req.body);
   let id = req.body._id;
@@ -234,7 +250,7 @@ app.get("/rides", (req, res) => {
   res.json(result);
   });
   });
-  
+   */
   app.delete("/rides", (req, res) => {
   // delete item
   console.log("delete item " + req.body._id);

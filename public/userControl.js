@@ -8,7 +8,8 @@
    * - when button 'register' is clicked, get values from input fields and call function checkUsersRegister
    */
 $(document).ready(function(){
-   
+
+  console.log(localStorage)
   $("#submit").click(function(){
       email_log=$("#email_log").val();
       pass_log=$("#password_log").val();
@@ -72,6 +73,11 @@ function checkUsersRegister(email_reg, pass_reg){
         alert('Nutzer existiert bereits');
         throw new Error ('Nutzer existiert bereits');
       }})
+      // if password doesn't meet the requirements
+      if(pass_reg.length < 6){
+        alert('Passwort muss mindestens 6 Zeichen lang sein');
+        throw new Error ('Passwort zu klein');
+      }
       // check if user is a doctor
       if (document.getElementById('doctor').checked){
           var doctor = true;}
@@ -129,15 +135,16 @@ function checkUsersSubmit(users, email, pass){
  * @param {boolean} doctor - user a doctor?
  */
 function openApp(email, doctor){
-  console.log(email, doctor);
+  //console.log(JSON.parse(doctor));
   // if user is a doctor
-  if (doctor == true){
+  if (JSON.parse(doctor)){
     localStorage.setItem('user', email);
-    location.replace("http://localhost:3000/page1")
+ 
+    location.replace("http://localhost:3000/doctor")
   }
   // if user is not a doctor
-  else {
+  else{
     localStorage.setItem('user', email);
-    location.replace("http://localhost:3000/pag2")
+    location.replace("http://localhost:3000/userInspect")
   }
 }
