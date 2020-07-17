@@ -17,3 +17,5 @@ Die Geometrie der Fahrten wird über die API nicht bereitgestellt. Daher ist es 
 Nur die Haltestellen, an denen Fahrten genommen wurden, werden in der Karte dargestellt.
 Informationen zu Fahrten und Risikostatus sind in der tabellarischen Ansicht sichtbar und auswählbar.
 
+Link zu GitHub repository: https://github.com/a2beckj/Geosoft1_Projekt_Becka_Wenzel/
+
