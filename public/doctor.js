@@ -52,6 +52,7 @@ function searchRidesByUser(name, risk){
                 changeRiskByUser(ride, risk);
             }
         })
+        alert("Risikostatus für Nutzer geändert");
         }
     })
 }
@@ -68,7 +69,7 @@ function changeRiskByUser(ride, risk){
     success: function(){
              console.log("Feature aktualisiert");
              // inform doctor that risk-state has changed
-             alert("Risikostatus für Nutzer geändert");
+             //alert("Risikostatus für Nutzer geändert");
     }
   })
 }
@@ -173,6 +174,7 @@ function checkRides(line, timestamp){
                 };
             }
         })
+        alert("Fahrt als Risiko markiert!");
         }
     })
 }
@@ -212,7 +214,7 @@ function changeRiskByRide(ride){
     success: function(){
              console.log("Feature aktualisiert");
              // inform doctor, that ride was marked as risk
-             alert("Fahrt als Risiko markiert!");
+             //alert("Fahrt als Risiko markiert!");
     }
   })
 }
