@@ -1,15 +1,15 @@
-var markersLayer = L.featureGroup()
-// jshint esversion: 6
+// Projektaufgabe Geosoft 1, SoSe 2020 
+//@author Judith Becka, 426693
+//@author Felix Wenzel
 
-/**
-* Lösung zu Aufgabe 6, Geosoft 1, SoSe 2020
-* @author Judith Becka   Matr.Nr.: 426693
-*/
+// initialize new global marker-Featuregroup
+var markersLayer = L.featureGroup()
+
 
 // load map
 var map2 = L.map('map2').setView([51.9606649, 7.6261347], 11);
 
-//getStations();
+
 // load OSM-Layer
 var osmLayer =new L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png',   
 {attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'});
@@ -36,7 +36,7 @@ if (navigator.geolocation) {
 /**
 * @description This function fills the pnt-array with the users coordinates, creates a marker on that 
 * location and zooms onto that marker by calling the function centerLeafletMapOnMarker(). After that
-* it calls the function busstops().
+* it calls the function getStations() with the users position.
 * @param {array} position - users current location
 */
 function showPosition(position) {
@@ -48,25 +48,9 @@ console.log(pnt);
 var marker = L.marker([position.coords.latitude, position.coords.longitude]).addTo(map2);
 // zoom to that marker
 centerLeafletMapOnMarker(map2, marker);
-console.log(pnt);
-// call function busstops().
+// call function getStations().
 getStations(pnt);
 }
-
-/**
-* time
-* @desc takes a second-value (as in seconds elapsed from jan 01 1970) of the time and returns the corresponding time.
-* source: https://stackoverflow.com/a/35890816
-* @param seconds time in milliseconds
-*/
-function time(seconds) {
-seconds = parseInt(seconds); //ensure the value is an integer
-var ms = seconds*1000;
-var time = new Date(ms).toISOString().slice(11, -5);
-return time + " GMT";
-}
-
-
 
 
 /**
@@ -83,17 +67,19 @@ var markerBounds = L.latLngBounds(latLngs);
 map.fitBounds(markerBounds);
 }
 
-
- 
-
-//______________________________________________________________________________
-
+/**
+ * @desc This function checks if the user, that is logged in, took a ride that is marked as a risk.
+ * If so, it informs the user with an alert.
+ */
 window.onload = function checkRisk(){
+  // gets all the rides
   $.ajax({  url: "//localhost:3000/rides",     
     type: "GET",
     success: function(rides){
+      // get user name
       var user = localStorage.getItem('user');
       var alerted = false;
+      // for each ride, that user took, check if risk changed to 'yes'
       rides.forEach(ride => {
         if(ride.user == user){
           if(ride.risk == 'yes'){
@@ -101,6 +87,7 @@ window.onload = function checkRisk(){
           }
         }
         })
+        // inform user with an alert
         if (alerted){
           alert("Risikofahrt genommen. Bitte sehen sie ihr Risiko in den historischen Fahrten ein");
         }
@@ -108,8 +95,12 @@ window.onload = function checkRisk(){
       })
 }
 
-
+/**
+ * @desc This function takes a location and calls public transit stations nearby
+ * @param {array} location - an array of coordinate
+ */
 function getStations(location){
+  // show given location in map
   var loc = L.circleMarker([location[1], location[0]]).addTo(map2);
   centerLeafletMapOnMarker(map2, loc);
   
@@ -121,7 +112,6 @@ function getStations(location){
   type: "GET",
   async: false,
   success: function(data){
-    console.log(data)
     stationsToMap(data.stations);
   }  
  });
@@ -133,28 +123,35 @@ function getStations(location){
  * Then it calls the 
  */
 function stationsToMap(stations){
-  console.log(stations)
   stations.forEach(station => {
   var id = station.place.id;
   var location = ([station.place.location.lat, station.place.location.lng])
   var oneMarker = L.marker(location);
+  // attach id to marker
   oneMarker.id = id;
-  oneMarker.location = location;
+  // add to Featuregroup
   oneMarker.addTo(markersLayer);
   })
+  // display in map
   markersLayer.addTo(map2);
 }
 
+// if marker in FeatureGroup is clicked, call function markerOnClick()
 markersLayer.on("click", markerOnClick);
 
+/**
+ * @desc This function gets the id of the clicked marker and calls function getDepartures() with that ID
+ * @param {event} e - clicked marker
+ */
 function markerOnClick(e) {
   var clickedMarkerID = e.layer.id;
-  //var clickedMarkerLocation = e.layer.location
-  //clickedMarker.bindPopup(e.layer.name);
   getDepartures(clickedMarkerID);
 }
 
-
+/**
+ * @desc This function calls the next departures of the clicked station
+ * @param {string} ID - id of station
+ */
 function getDepartures(ID){
   // call developers HERE API to get stations nearby
   $.ajax({  url: "https://transit.hereapi.com/v8/departures?ids="+ID, 
@@ -169,9 +166,14 @@ function getDepartures(ID){
   })
 }
 
+/**
+ * @desc This function displays the next departures of a given station in a table
+ * @param {array} departures - array of departures from station
+ */
 function departuresToTable(departures){
+  //attaches to the table in html
   var table = document.getElementById("table");
-  console.log(departures);
+
   //clears the existing table except the head row
   for (var i = table.rows.length - 1; i > 0; i--){
       table.deleteRow(i); }
@@ -222,17 +224,21 @@ function departuresToTable(departures){
   })   
 }
 
-
 /**
- * @desc This function loads the input from the textarea into MongoDB
+ * @desc This function takes certain parameters of taken rides and saves them in MongoDB
+ * @param {string} user - users name
+ * @param {int} line - linenumber of transit
+ * @param {string} busstop - name of transit station
+ * @param {array} location - coordinates of station
+ * @param {time} timestamp - date and time of departure
  */
 function inputRidesToMongo(user, line, busstop, location, timestamp){
-  console.log(line);
+  // if no departure is chosen
   if(line == undefined){
     alert('Bitte zuerst eine Fahrt wählen');
     throw new Error ('keine fahrt gewählt')
   }
-  // attach to server and post locations from textarea to MongoDB
+  // attach to server and post departures to MongoDB
   $.ajax({  url: "//localhost:3000/rides",       
             type: "POST",
             data: {user: user, line: line, busstop: busstop, coordinates:location, time: timestamp, risk: 'no'},
@@ -242,6 +248,10 @@ function inputRidesToMongo(user, line, busstop, location, timestamp){
             }
           })
 }  
+
+/**
+ * @desc This function logs out a user by clearing the local storage and redirecting to Login side
+ */
 function logout(){
   localStorage.clear();
   location.replace("http://localhost:3000/userControl");
