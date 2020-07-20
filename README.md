@@ -12,6 +12,8 @@ Verwendete Bibliotheken:
 - leaflet
 - bootstrap
 - jquery
+- express
+- express-session
 
 Die Geometrie der Fahrten wird über die API nicht bereitgestellt. Daher ist es nicht möglich gewesen, diese an der Karte darszustellen.
 Nur die Haltestellen, an denen Fahrten genommen wurden, werden in der Karte dargestellt.
