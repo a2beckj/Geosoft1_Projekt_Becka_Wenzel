@@ -1,4 +1,4 @@
-# Geosoft1_Aufgabe6_Becka
+# Geosoft1 Projektabgabe Becka Wenzel
 
 Autoren: Judith Becka, Felix Wenzel
 
