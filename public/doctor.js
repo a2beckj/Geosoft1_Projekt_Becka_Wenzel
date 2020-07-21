@@ -11,6 +11,9 @@ var osmLayer =new L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png',
 // add OSM-Layer to map
 osmLayer.addTo(mapDoc);
 
+// Print name of user that is logged in
+$('#userName').text(localStorage.getItem('user'));
+
 /**
  * @desc This function gets the users stored in MongoDB and gets all the rides taken by user by calling function searchRidesByUser()
  * @param {string} risk - risk of user

@@ -16,6 +16,8 @@ var osmLayer =new L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png',
 // add OSM-Layer to map
 osmLayer.addTo(map);
 
+// Print name of user that is logged in
+$('#userName').text(localStorage.getItem('user'));
 
 /**
  * @desc This function gets the rides takes by certain user and displays them in a table. 

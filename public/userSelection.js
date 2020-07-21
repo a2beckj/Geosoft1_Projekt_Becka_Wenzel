@@ -17,6 +17,8 @@ var osmLayer =new L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png',
 // add OSM-Layer to map
 osmLayer.addTo(map2);
 
+// Print name of user that is logged in
+$('#userName').text(localStorage.getItem('user'));
 
 /**
 * @description This function gets the users current Location
@@ -97,7 +99,7 @@ window.onload = function checkRisk(){
 
 /**
  * @desc This function takes a location and calls public transit stations nearby
- * @param {array} location - an array of coordinate
+ * @param {array} location - an array of coordinates
  */
 function getStations(location){
   // show given location in map
@@ -236,7 +238,7 @@ function inputRidesToMongo(user, line, busstop, location, timestamp){
   // if no departure is chosen
   if(line == undefined){
     alert('Bitte zuerst eine Fahrt wählen');
-    throw new Error ('keine fahrt gewählt')
+    throw new Error ('keine Fahrt gewählt')
   }
   // attach to server and post departures to MongoDB
   $.ajax({  url: "//localhost:3000/rides",       
