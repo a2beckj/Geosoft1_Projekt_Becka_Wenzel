@@ -203,6 +203,7 @@ function checkTimestamp(checkTimestamp, riskTimestamp){
         }
         else {return false}
     }
+    else {return false}
 }
 
 var alertedRide = false;

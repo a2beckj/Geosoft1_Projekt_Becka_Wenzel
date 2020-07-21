@@ -124,6 +124,10 @@ app.get("/userControl", (req, res) => {
   res.sendFile(__dirname + "/public/userControl.html");
 });
 
+app.get("/test", (req, res) => {
+  res.sendFile(__dirname + "/public/test/test.html");
+});
+
 // routes for get, post, put, and delete
 
 app.get("/user", (req, res) => {
