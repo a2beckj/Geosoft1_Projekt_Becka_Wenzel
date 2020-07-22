@@ -3,6 +3,7 @@
 Autoren: Judith Becka, Felix Wenzel
 
 API-Keys: wurden von developers Here bereitgestellt. Wir nutzen ausschließliche die developers here public transit API.
+Der Key ist in einer tonkens.js im public ordner eingebunden. Die Variable heisst api_key.
 
 
 Mongo Datenbank heisst geosoft1 mit den collections 'user' für die Nutzerkontrolle und 'rides' für die Farten.
