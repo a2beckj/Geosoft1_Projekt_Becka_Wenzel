@@ -18,7 +18,7 @@ Verwendete Bibliotheken:
 - mongodb 3.5.7
 - body-parser 1.19.0
 
-Die Geometrie der Fahrten wird über die API nicht bereitgestellt. Daher ist es nicht möglich gewesen, diese an der Karte darszustellen.
+Die Geometrie der Fahrten wird über die API nicht bereitgestellt. Daher ist es nicht möglich gewesen, diese in der Karte darszustellen.
 Nur die Haltestellen, an denen Fahrten genommen wurden, werden in der Karte dargestellt.
 Informationen zu Fahrten und Risikostatus sind in der tabellarischen Ansicht sichtbar und auswählbar.
 
