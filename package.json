@@ -17,6 +17,7 @@
     "jquery": "^3.5.1",
     "leaflet": "^1.6.0",
     "mongo": "^0.1.0",
+    "mongodb": "^3.5.9",
     "update-mongo": "0.0.4"
   }
 }

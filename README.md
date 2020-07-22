@@ -15,7 +15,7 @@ Verwendete Bibliotheken:
 - jquery 3.5.1
 - express 4.17.1
 - express-session 1.17.1
-- mongodb 3.5.7
+- mongodb 3.5.9
 - body-parser 1.19.0
 
 Die Geometrie der Fahrten wird über die API nicht bereitgestellt. Daher ist es nicht möglich gewesen, diese in der Karte darszustellen.
