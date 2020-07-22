@@ -10,11 +10,13 @@ Mongo Datenbank heisst geosoft1 mit den collections 'user' für die Nutzerkontro
 Starten der App über localhost:3000/userControl. Hier kann man sich dann einloggen/registrieren
 
 Verwendete Bibliotheken:
-- leaflet
-- bootstrap
-- jquery
-- express
-- express-session
+- leaflet 1.6.0
+- bootstrap 4.5.0
+- jquery 3.5.1
+- express 4.17.1
+- express-session 1.17.1
+- mongodb 3.5.7
+- body-parser 1.19.0
 
 Die Geometrie der Fahrten wird über die API nicht bereitgestellt. Daher ist es nicht möglich gewesen, diese an der Karte darszustellen.
 Nur die Haltestellen, an denen Fahrten genommen wurden, werden in der Karte dargestellt.
