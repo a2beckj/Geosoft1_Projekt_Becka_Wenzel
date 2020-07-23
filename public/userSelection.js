@@ -173,6 +173,8 @@ function getDepartures(ID){
  * @param {array} departures - array of departures from station
  */
 function departuresToTable(departures){
+  //initialize execute parameter
+  var executed = false;
   //attaches to the table in html
   var table = document.getElementById("table");
 
@@ -180,7 +182,8 @@ function departuresToTable(departures){
   for (var i = table.rows.length - 1; i > 0; i--){
       table.deleteRow(i); }
 
-  departures.forEach(departure => {
+    
+    departures.forEach(departure => {
 
     //print name of clicked Busstop
     var busstop = departure.place.name;
@@ -203,27 +206,30 @@ function departuresToTable(departures){
       Direction.innerHTML = dep.transport.headsign;
       Time.innerHTML = dep.time;
     });
+  
 
     // Highlight cells and extract values of cells
     // source: http://jsfiddle.net/65JPw/2/
     $("#table tr").click(function(){
-      //console.log("table clicked")
+
       $(this).addClass('selected').siblings().removeClass('selected');    
       var value=$(this).find('td:first').html();
-      //console.log(value);    
+   
     });
     
     // Hier übergeben an MongoDB
     $('.ok').on('click', function(e){
+      
       var line = ($("#table tr.selected td:first").html());
       var timestamp = ($("#table tr.selected td:last").html());
       var user = localStorage.getItem('user');
-      //var location = (latlng.lat, latlng.lng);
-
+      //prevent user from selecting 2 departures at the same time and same location
+      if(!executed){
       inputRidesToMongo(user, line, busstop, location, timestamp);
-       //alert($("#table tr.selected td:first").html());
+      executed = true
+      }
     });
-  })   
+  })
 }
 
 /**
@@ -235,6 +241,7 @@ function departuresToTable(departures){
  * @param {time} timestamp - date and time of departure
  */
 function inputRidesToMongo(user, line, busstop, location, timestamp){
+  
   // if no departure is chosen
   if(line == undefined){
     alert('Bitte zuerst eine Fahrt wählen');

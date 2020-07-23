@@ -121,6 +121,7 @@ function getRidesByBusstop(busstop){
     $.ajax({  url: "//localhost:3000/rides",     
     type: "GET",
     success: function(rides){
+        console.log(rides)
         var table = document.getElementById("tableDoc");
         //clears the existing table except the head row
         for (var i = table.rows.length - 1; i > 0; i--){
