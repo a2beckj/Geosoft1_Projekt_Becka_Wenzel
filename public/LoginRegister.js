@@ -145,6 +145,6 @@ function openApp(email, doctor){
   // if user is not a doctor
   else{
     localStorage.setItem('user', email);
-    location.replace("http://localhost:3000/userInspect")
+    location.replace("http://localhost:3000/userSelection")
   }
 }

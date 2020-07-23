@@ -263,6 +263,6 @@ function inputRidesToMongo(user, line, busstop, location, timestamp){
  */
 function logout(){
   localStorage.clear();
-  location.replace("http://localhost:3000/userControl");
+  location.replace("http://localhost:3000/LoginRegister");
 }
  

@@ -112,16 +112,16 @@ app.get("/doctor", (req, res) => {
   res.sendFile(__dirname + "/public/doctor.html");
   });
 
-app.get("/userRisk", (req, res) => {
-res.sendFile(__dirname + "/public/userRiskInspection.html");
+app.get("/userHistory", (req, res) => {
+res.sendFile(__dirname + "/public/userHistory.html");
 });
 
-app.get("/userInspect", (req, res) => {
+app.get("/userSelection", (req, res) => {
 res.sendFile(__dirname + "/public/userSelection.html");
 });
 
-app.get("/userControl", (req, res) => {
-  res.sendFile(__dirname + "/public/userControl.html");
+app.get("/LoginRegister", (req, res) => {
+  res.sendFile(__dirname + "/public/LoginRegister.html");
 });
 
 app.get("/test", (req, res) => {
