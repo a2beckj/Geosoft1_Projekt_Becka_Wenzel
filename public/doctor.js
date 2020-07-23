@@ -51,7 +51,7 @@ function searchRidesByUser(name, risk){
     type: "GET",
     success: function(rides){
         rides.forEach(ride =>{
-            if (ride.user = name){
+            if (ride.user == name){
                 changeRiskByUser(ride, risk);
             }
         })
