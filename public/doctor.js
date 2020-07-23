@@ -51,7 +51,11 @@ function searchRidesByUser(name, risk){
     type: "GET",
     success: function(rides){
         rides.forEach(ride =>{
+<<<<<<< HEAD
             if (ride.user = name){
+=======
+            if (ride.user == name){
+>>>>>>> Judith
                 changeRiskByUser(ride, risk);
             }
         })
@@ -121,6 +125,10 @@ function getRidesByBusstop(busstop){
     $.ajax({  url: "//localhost:3000/rides",     
     type: "GET",
     success: function(rides){
+<<<<<<< HEAD
+=======
+        console.log(rides)
+>>>>>>> Judith
         var table = document.getElementById("tableDoc");
         //clears the existing table except the head row
         for (var i = table.rows.length - 1; i > 0; i--){

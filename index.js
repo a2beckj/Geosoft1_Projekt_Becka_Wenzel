@@ -112,6 +112,7 @@ app.get("/doctor", (req, res) => {
   res.sendFile(__dirname + "/public/doctor.html");
   });
 
+<<<<<<< HEAD
 app.get("/userRisk", (req, res) => {
 res.sendFile(__dirname + "/public/userRiskInspection.html");
 });
@@ -122,6 +123,18 @@ res.sendFile(__dirname + "/public/userSelection.html");
 
 app.get("/userControl", (req, res) => {
   res.sendFile(__dirname + "/public/userControl.html");
+=======
+app.get("/userHistory", (req, res) => {
+res.sendFile(__dirname + "/public/userHistory.html");
+});
+
+app.get("/userSelection", (req, res) => {
+res.sendFile(__dirname + "/public/userSelection.html");
+});
+
+app.get("/LoginRegister", (req, res) => {
+  res.sendFile(__dirname + "/public/LoginRegister.html");
+>>>>>>> Judith
 });
 
 app.get("/test", (req, res) => {
@@ -289,7 +302,11 @@ console.log("SIGINT");
 process.exit(0);
 });
 
+<<<<<<< HEAD
 /*// user control
+=======
+// user control
+>>>>>>> Judith
 router.get('/',(req,res) => {
   sess = req.session;
   if(sess.email) {
@@ -314,7 +331,11 @@ router.get('/admin',(req,res) => {
       res.write('<h1>Please login first.</h1>');
       res.end('<a href='+'/'+'>Login</a>');
   }
+<<<<<<< HEAD
 });*/
+=======
+});
+>>>>>>> Judith
 
 router.get('/logout',(req,res) => {
   req.session.destroy((err) => {

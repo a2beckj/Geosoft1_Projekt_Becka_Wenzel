@@ -16,8 +16,14 @@
     "express-session": "^1.17.1",
     "jquery": "^3.5.1",
     "leaflet": "^1.6.0",
+<<<<<<< HEAD
     "leaflet-draw": "^1.0.4",
     "leaflet.heat": "^0.2.0",
     "mongodb": "^3.5.9"
+=======
+    "mongo": "^0.1.0",
+    "mongodb": "^3.5.9",
+    "update-mongo": "0.0.4"
+>>>>>>> Judith
   }
 }
