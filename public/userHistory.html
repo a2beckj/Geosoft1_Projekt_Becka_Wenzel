@@ -8,88 +8,70 @@
   <link rel="stylesheet" type="text/css" href="/leaflet-draw/leaflet.draw-src.css">
   <link rel="stylesheet" href="public/style.css">
   <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css">
-    
-  <title>Corona ÖPNV-Risiko Einsicht</title>
+
+  <title>Rides taken</title>
 </head>
 <body>
 
-  <nav class ="navbar navbar-expand-lg navbar-light bg-light">
-    <a class = "navbar-brand" href="#"> Historische Fahrten</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" target="_blank" rel="noopener noreferrer" href="localhost:3000/userSelection">Bushaltestellenanzeige Münster <span class="sr-only">(current)</span></a>
-        </li>
-    </div>
-    <div class="float-right" id = 'userName'></div><br>
-  </nav>
+<nav class ="navbar navbar-expand-lg navbar-light bg-success">
+  <a class = "navbar-brand" href="#">Rides taken</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="btn-warning" style="float:left" target="_blank" rel="noopener noreferrer" href="localhost:3000/userSelection"> Select public transport<span class="sr-only">(current)</span></a>
+      </li>
+      <button class="btn-sm btn-danger" onclick="logout()" style ="float:left"> Logout</button>
+  </div>
+  <div>
+    <div>Logged in as: </div>
+    <div class="float-right" id ='userName'> </div>
+  </div>
+</nav>
 
-  <button onclick="logout()" style ="float:left"> Logout</button>
-  <p>&nbsp;</p>
-  <div class = "row">
-    <div class = "col-md-6">
-      <div id="map"></div>
-    </div>
+<div>
+<p>&nbsp;</p>
+<div class = "row">
+  <div class = "col-md-6">
+    <div id="map"></div>
+  </div>
 
-    <div class = "col-md-6 table-responsive">
-  
-      <table id="tableHistoric" class= "table-responsive">
-      
-          <div id = "busstop"> </div>
-        <tbody>
-          <tr>
-            <td>Eingestiegen</td>
-            <td>Linie</td>
-            <!-- <td>In Richtung</td> -->
-            <td>Datum/Uhrzeit</td>
-          </tr>
-          
-          
-      </table>
-     
-  
-    </div>
-   
+  <div class = "col-md-6 table-responsive">
 
-  <footer class="page-footer font-small teal pt-4">
+    <table id="tableHistoric" class= "table-responsive">
 
-    <!-- Footer Text -->
-    <div class="container-fluid text-center ">
-  
-      <!-- Grid row -->
-      <div class="row">
-  
-        <!-- Grid column -->
-        <div class="col-md-12 mt-md-0 mt-1">
-  
-          <!-- Content -->
-          <h5 class="text-uppercase font-weight-bold">Impressum</h5>
-          <p>Judith Becka, Geosoftware 1, Aufgabe 6, j_beck60@uni-muenster.de</p>
-          
-  
-        </div>
-        
-  
+      <div id = "busstop"> </div>
+      <tbody>
+      <tr>
+        <td>Eingestiegen</td>
+        <td>Linie</td>
+        <!-- <td>In Richtung</td> -->
+        <td>Datum/Uhrzeit</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<footer class="page-footer font-small teal pt-4">
+  <div class="container-fluid text-center">
+    <div class="row">
+      <div class="col-md-12 mt-md-0 mt-1">
+        <h5 class="text-uppercase font-weight-bold">Impressum</h5>
+        <p>Judith Becka und Felix Wenzel, Geosoftware 1, Projekt, j_beck60@uni-muenster.de f_wenz01@uni-muenster.de</p>
+      </div>
     </div>
-    <!-- Footer Text -->
-  
-    <!-- Copyright -->
     <div class="footer-copyright text-center py-3">© 2020 Copyright:
       <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
     </div>
-    <!-- Copyright -->
-  
-  </footer>
-  <!-- Footer -->
+</footer>
 
 
-  </body>
+</body>
 </html>
 
-<script src= "/leaflet/leaflet.js"></script> 
+<script src= "/leaflet/leaflet.js"></script>
 <script src= "/leaflet-draw/leaflet.draw-src.js"></script>
 <script src="/jquery/jquery.js"></script>
 <script src="/bootstrap/js/bootstrap.js"></script>

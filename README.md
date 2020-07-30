@@ -2,27 +2,14 @@
 
 Autoren: Judith Becka, Felix Wenzel
 
-<<<<<<< HEAD
-API-Keys: wurden von developers Here bereitgestellt. Wir nutzen ausschließliche die developers here public transit API.
-=======
 API-Keys: wurden von developers Here bereitgestellt. Wir nutzen ausschließlich die developers here public transit API.
 Der Key ist in einer tonkens.js im public ordner eingebunden. Die Variable heisst api_key.
->>>>>>> Judith
 
 
 Mongo Datenbank heisst geosoft1 mit den collections 'user' für die Nutzerkontrolle und 'rides' für die Farten.
 Starten der App über localhost:3000/userControl. Hier kann man sich dann einloggen/registrieren
 
 Verwendete Bibliotheken:
-<<<<<<< HEAD
-- leaflet
-- bootstrap
-- jquery
-- express
-- express-session
-
-Die Geometrie der Fahrten wird über die API nicht bereitgestellt. Daher ist es nicht möglich gewesen, diese an der Karte darszustellen.
-=======
 - leaflet 1.6.0
 - bootstrap 4.5.0
 - jquery 3.5.1
@@ -32,7 +19,6 @@ Die Geometrie der Fahrten wird über die API nicht bereitgestellt. Daher ist es 
 - body-parser 1.19.0
 
 Die Geometrie der Fahrten wird über die API nicht bereitgestellt. Daher ist es nicht möglich gewesen, diese in der Karte darszustellen.
->>>>>>> Judith
 Nur die Haltestellen, an denen Fahrten genommen wurden, werden in der Karte dargestellt.
 Informationen zu Fahrten und Risikostatus sind in der tabellarischen Ansicht sichtbar und auswählbar.
 

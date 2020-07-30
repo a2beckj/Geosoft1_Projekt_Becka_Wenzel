@@ -8,86 +8,91 @@
   <link rel="stylesheet" type="text/css" href="/leaflet/leaflet.css">
   <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css">
 
-   
-  <title>Corona ÖPNV-Auswahl</title>
-  
+
+  <title>Doctors workspace</title>
+
 </head>
-<body >
+<body>
 
-  <button onclick="logout()" style ="float:left"> Logout</button>
-
-  <nav class ="navbar navbar-expand-lg navbar-light bg-light">
-      <a class = "navbar-brand" href="#"> Corona ÖPNV-Risikomarkierung für Ärzte</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-
- 
-      <div class="float-right" id = 'userName'></div><br>
-
-
+<nav class ="navbar navbar-expand-lg navbar-light bg-danger">
+  <a class = "navbar-brand" href="#">Doctors workspace</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <button class="btn-sm btn-dark" onclick="logout()" style ="float:left"> Logout</button>
+  </div>
+  <div>
+    <div>Logged in as: </div>
+    <div class="float-right" id ='userName'> </div>
+  </div>
 </nav>
 
 <div >
-  <input type="text" id="user" value="Hier Nutzername eingeben" style= "float:left" class= "form-control"> 
-  <button onclick="getUser('yes')" style ="float:left"> Fahrten des Nutzers als Rikio markieren</button>
-  <button onclick="getUser('no')" style ="float:left"> Risikofahrten für Nutzer aufheben</button>
+  <input type="text" id="user" value="Type your patients Id in here" class= "form-control">
+  <button class="btn-danger" onclick="getUser('yes')" style ="float:left"> Mark patient´s rides as risk</button>
+  <button onclick="getUser('no')" style ="float:left"> Unmark patient´s rides</button>
 </div>
 
 <div >
-  
-  <button onclick="getRides()" style ="float:left"> alle Fahrten anzeigen</button>
-</div>
- 
-  <p>&nbsp;</p> 
-  
-  
-    
 
-  <p>&nbsp;</p>
+  <button class="btn-warning" onclick="getRides()"> show all rides</button>
+</div>
+
+<p>&nbsp;</p>
+
+
+
+
+<p>&nbsp;</p>
 
 <div class = "row">
   <div class = "col-md-6">
     <div id="mapDoc"></div>
   </div>
-  
+
   <div class = "col-md-6 table-responsive">
-  
     <table id="tableDoc" class= "table-responsive">
-      <input type="button" name="OK" class="ok" value="Fahrt als Risiko markieren"/>
-        <div id = "busstopDoc"> </div>
+      <input type="button" name="OK" class="ok btn-danger" value="Fahrt als Risiko markieren"/>
+      <div id = "busstopDoc"> </div>
       <tbody>
-        <tr>
-          <td>Linie</td>
-          <td>Datum/Uhrzeit</td>
-        </tr>
-        
-        
+      <tr>
+        <td>Linie</td>
+        <td>Datum/Uhrzeit</td>
+      </tr>
     </table>
-   
+
 
   </div>
 
-  </div> 
+</div>
 
+<footer class="page-footer font-small teal pt-4">
+  <div class="container-fluid text-center ">
+    <div class="row">
+      <div class="col-md-12 mt-md-0 mt-1">
+        <h5 class="text-uppercase font-weight-bold">Impressum</h5>
+        <p>Judith Becka und Felix Wenzel, Geosoftware 1, Projekt, j_beck60@uni-muenster.de f_wenz01@uni-muenster.de</p>
+      </div>
+    </div>
+    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+      <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+    </div>
+</footer>
 
 
 </body>
 </html>
 
-  <script src="/leaflet/leaflet.js"></script>
-  <script src="/jquery/jquery.js"></script>
-  <script src="/bootstrap/js/bootstrap.js"></script>
+<script src="/leaflet/leaflet.js"></script>
+<script src="/jquery/jquery.js"></script>
+<script src="/bootstrap/js/bootstrap.js"></script>
 
 
-  <script src="public/tokens.js"></script>
-  <script src="public/userSelection.js"></script>
-<<<<<<< HEAD
-  <script src="public/userControl.js"></script> 
-=======
-  <script src="public/LoginRegister.js"></script> 
->>>>>>> Judith
-  <script src="public/doctor.js"></script> 
+<script src="public/tokens.js"></script>
+<script src="public/userSelection.js"></script>
+<script src="public/LoginRegister.js"></script>
+<script src="public/doctor.js"></script>
 
  
