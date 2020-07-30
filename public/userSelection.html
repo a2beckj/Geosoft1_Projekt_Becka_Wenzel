@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" type="text/css" href="public/style.css">
+  <link rel="stylesheet" type="text/css" href="/leaflet/leaflet.css">
+  <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css">
+
+   
+  <title>Corona ÖPNV-Auswahl</title>
+  
+</head>
+<body >
+
+  <button onclick="logout()" style ="float:left"> Logout</button>
+<nav class ="navbar navbar-expand-lg navbar-light bg-light">
+    <a class = "navbar-brand" href="#"> Bushaltestellenanzeige Münster</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+   
+
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" target="_blank" rel="noopener noreferrer" href="localhost:3000/userHistory">Historische Fahrten <span class="sr-only">(current)</span></a>
+        </li>
+    </div>
+
+    <div class="float-right" id = 'userName'></div><br>
+  </nav> 
+ 
+  <p>&nbsp;</p> 
+  
+
+  <div>
+      <button onclick="getLocation()" type = "button" class = "btn btn-block" style = "color:darkslategray">Aktuellen Standort ermitteln und Bushaltestellen anzeigen </button>
+    </div>
+
+  <div>
+    <h3>Oder vorgefertigte Standorte in Münster nutzen</h3>
+    <button onclick="getStations([7.6264750957489005, 51.95579743091287])" type = "button" style = "color:darkslategray">Ludgerikreisel</button>
+    <button onclick="getStations([7.634881138801575, 51.957043747598654])" type = "button" style = "color:darkslategray">Hauptbahnhof</button>
+    <button onclick="getStations([7.630498409271239, 51.964011077456234])" type = "button" style = "color:darkslategray">Bült</button>
+  </div>
+  
+
+  
+    
+
+  <p>&nbsp;</p>
+
+<div class = "row">
+  <div class = "col-md-6">
+    <div id="map2"></div>
+  </div>
+  
+  <div class = "col-md-6 table-responsive">
+  
+    <table id="table" class= "table-responsive">
+      <input type="button" name="OK" class="ok" value="Auswahl speichern"/>
+        <div id = "busstop"> </div>
+      <tbody>
+        <tr>
+          <td>Linie</td>
+          <td>In Richtung</td>
+          <td>Datum/Uhrzeit</td>
+        </tr>
+        
+        
+    </table>
+   
+
+  </div>
+
+  </div> 
+
+
+  <footer class="page-footer font-small teal pt-4">
+
+    <!-- Footer Text -->
+    <div class="container-fluid text-center ">
+  
+      <!-- Grid row -->
+      <div class="row">
+  
+        <!-- Grid column -->
+        <div class="col-md-12 mt-md-0 mt-1">
+  
+          <!-- Content -->
+          <h5 class="text-uppercase font-weight-bold">Impressum</h5>
+          <p>Judith Becka, Geosoftware 1, Aufgabe 6, j_beck60@uni-muenster.de</p>
+          
+  
+        </div>
+        
+  
+    </div>
+    <!-- Footer Text -->
+  
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+      <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+    </div>
+    <!-- Copyright -->
+  
+  </footer>
+  <!-- Footer -->
+
+</body>
+</html>
+
+  <script src="/leaflet/leaflet.js"></script>
+  <script src="/jquery/jquery.js"></script>
+  <script src="/bootstrap/js/bootstrap.js"></script>
+  <script src="/leaflet-heat/leaflet-heat.js"></script>
+
+  <script src="public/tokens.js"></script>
+  <script src="public/userSelection.js"></script>
+  <script src="public/userHistory.js"></script>
+  <script src="public/LoginRegister.js"></script> 
+ 

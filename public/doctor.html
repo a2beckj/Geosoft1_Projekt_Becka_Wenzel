@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" type="text/css" href="public/style.css">
+  <link rel="stylesheet" type="text/css" href="/leaflet/leaflet.css">
+  <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css">
+
+   
+  <title>Corona ÖPNV-Auswahl</title>
+  
+</head>
+<body >
+
+  <button onclick="logout()" style ="float:left"> Logout</button>
+
+  <nav class ="navbar navbar-expand-lg navbar-light bg-light">
+      <a class = "navbar-brand" href="#"> Corona ÖPNV-Risikomarkierung für Ärzte</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+
+ 
+      <div class="float-right" id = 'userName'></div><br>
+
+
+</nav>
+
+<div >
+  <input type="text" id="user" value="Hier Nutzername eingeben" style= "float:left" class= "form-control"> 
+  <button onclick="getUser('yes')" style ="float:left"> Fahrten des Nutzers als Rikio markieren</button>
+  <button onclick="getUser('no')" style ="float:left"> Risikofahrten für Nutzer aufheben</button>
+</div>
+
+<div >
+  
+  <button onclick="getRides()" style ="float:left"> alle Fahrten anzeigen</button>
+</div>
+ 
+  <p>&nbsp;</p> 
+  
+  
+    
+
+  <p>&nbsp;</p>
+
+<div class = "row">
+  <div class = "col-md-6">
+    <div id="mapDoc"></div>
+  </div>
+  
+  <div class = "col-md-6 table-responsive">
+  
+    <table id="tableDoc" class= "table-responsive">
+      <input type="button" name="OK" class="ok" value="Fahrt als Risiko markieren"/>
+        <div id = "busstopDoc"> </div>
+      <tbody>
+        <tr>
+          <td>Linie</td>
+          <td>Datum/Uhrzeit</td>
+        </tr>
+        
+        
+    </table>
+   
+
+  </div>
+
+  </div> 
+
+
+
+</body>
+</html>
+
+  <script src="/leaflet/leaflet.js"></script>
+  <script src="/jquery/jquery.js"></script>
+  <script src="/bootstrap/js/bootstrap.js"></script>
+
+
+  <script src="public/tokens.js"></script>
+  <script src="public/userSelection.js"></script>
+  <script src="public/LoginRegister.js"></script> 
+  <script src="public/doctor.js"></script> 
+
+ 
