@@ -139,19 +139,25 @@ function getRidesByBusstop(busstop){
             Time.innerHTML = ride.time;
             }
         });
+        var alerted = false;
 
         // Highlight cells and extract values of cells
     // source: http://jsfiddle.net/65JPw/2/
     $("#tableDoc tr").click(function(){
         $(this).addClass('selected').siblings().removeClass('selected');    
-        var value=$(this).find('td:first').html();  
+        var value=$(this).find('td:first').html(); 
+        alerted = false; 
       });
 
       // Hier übergeben an MongoDB
         $('.ok').on('click', function(e){
+        
         var line = ($("#tableDoc tr.selected td:first").html());
         var timestamp = ($("#tableDoc tr.selected td:last").html());
+        if (!alerted){
         checkRides(line, timestamp);
+        alerted = true;
+        }
     });
 
     }
