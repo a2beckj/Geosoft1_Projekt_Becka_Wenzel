@@ -1,6 +1,6 @@
 // Projektaufgabe Geosoft 1, SoSe 2020 
 //@author Judith Becka, 426693
-//@author Felix Wenzel
+//@author Felix Wenzel, 430483
 
   /**
    * @desc When document is ready, execute followiing functions:

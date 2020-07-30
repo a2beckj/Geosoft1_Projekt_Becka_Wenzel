@@ -2,21 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4b59f0eb-a2f2-4f0a-89b5-ded446051a1d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/LoginRegister.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/LoginRegister.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/LoginRegister.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/LoginRegister.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/doctor.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/doctor.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/doctor.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/doctor.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/test/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/test/test.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/test/test.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/test/test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/userHistory.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/userHistory.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/userHistory.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/userHistory.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/userSelection.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/userSelection.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/userSelection.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/userSelection.js" afterDir="false" />
@@ -62,7 +52,7 @@
       <workItem from="1595329330742" duration="1517000" />
       <workItem from="1595492107714" duration="2036000" />
       <workItem from="1595498656610" duration="4624000" />
-      <workItem from="1595947742494" duration="13329000" />
+      <workItem from="1595947742494" duration="16089000" />
     </task>
     <servers />
   </component>
