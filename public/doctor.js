@@ -34,7 +34,7 @@ function getUser(risk){
                     }); 
                     // if given user doesn't exist     
                     if (counter == users.length){
-                        alert('Nutzer existiert nicht');
+                        alert('User doesnt exist');
                     }
                 
                     }
@@ -55,7 +55,7 @@ function searchRidesByUser(name, risk){
                 changeRiskByUser(ride, risk);
             }
         })
-        alert("Risikostatus für Nutzer geändert");
+        alert("Riskstatus has changed!");
         }
     })
 }
@@ -71,8 +71,6 @@ function changeRiskByUser(ride, risk){
     data:{_id: ride._id, risk: risk},
     success: function(){
              console.log("Feature aktualisiert");
-             // inform doctor that risk-state has changed
-             //alert("Risikostatus für Nutzer geändert");
     }
   })
 }
@@ -178,7 +176,7 @@ function checkRides(line, timestamp){
                 };
             }
         })
-        alert("Fahrt als Risiko markiert!");
+        alert("Ride successfully marked!");
         }
     })
 }
@@ -218,8 +216,6 @@ function changeRiskByRide(ride){
     data:{_id: ride._id, risk: 'yes'},
     success: function(){
              console.log("Feature aktualisiert");
-             // inform doctor, that ride was marked as risk
-             //alert("Fahrt als Risiko markiert!");
     }
   })
 }

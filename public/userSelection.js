@@ -1,6 +1,6 @@
 // Projektaufgabe Geosoft 1, SoSe 2020 
 //@author Judith Becka, 426693
-//@author Felix Wenzel
+//@author Felix Wenzel, 430483
 
 // initialize new global marker-Featuregroup
 var markersLayer = L.featureGroup()
@@ -91,7 +91,7 @@ window.onload = function checkRisk(){
         })
         // inform user with an alert
         if (alerted){
-          alert("Risikofahrt genommen. Bitte sehen sie ihr Risiko in den historischen Fahrten ein");
+          alert("One of your rides has been marked risky. please check your taken rides!");
         }
       }
       })
@@ -244,7 +244,7 @@ function inputRidesToMongo(user, line, busstop, location, timestamp){
   
   // if no departure is chosen
   if(line == undefined){
-    alert('Bitte zuerst eine Fahrt wählen');
+    alert('Please choose a ride first!');
     throw new Error ('keine Fahrt gewählt')
   }
   // attach to server and post departures to MongoDB
@@ -253,7 +253,7 @@ function inputRidesToMongo(user, line, busstop, location, timestamp){
             data: {user: user, line: line, busstop: busstop, coordinates:location, time: timestamp, risk: 'no'},
             success: function(x){
               console.log("eingefügt!")
-              alert('Fahrt gespeichert!')
+              alert('Ride saved!')
             }
           })
 }  
