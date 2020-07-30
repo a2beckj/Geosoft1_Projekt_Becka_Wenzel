@@ -1,28 +1,70 @@
 <html>
 <head>
-<title>Session Management in NodeJS using Node and Express</title>
 
+<title>LoginRegister</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" type="text/css" href="public/style.css">
+    <link rel="stylesheet" type="text/css" href="/leaflet/leaflet.css">
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.css">
+
+<!--Session Management in NodeJS using Node and Express -->
 </head>
+
 <body>
-<h2> Login </h2>
-<input type="text" size="40" placeholder="Type your email" id="email_log"><br />
-<input type="password" size="40" placeholder="Type your password" id="password_log"><br />
-<input type="button" value="Submit" id="submit">
-<!-- <button onclick="InputUserToMongo()" type = "button" class = "btn btn-block" float = "left" style = "color:darkslategray"  >submit</button> -->
 
-<h2>Registrierung</h2>
+<div class="container" style="margin-top:30px">
+    <div class="row">
+        <div class="col-sm-6">
+            <h1>Register</h1>
+            <p>Please fill in this form to create an account.</p>
+            <hr>
 
-<input type="text" size="40" placeholder="Type your email" id="email_reg"><br />
-<input type="password" size="40" placeholder="Type your password" id="password_reg"><br />
-<label for="doctor">Ich bin ein Arzt</label>
-<input type="checkbox" id="doctor" />
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="email" required id="email_reg">
 
-<input type="button" value="registrieren" id="register">
-<!-- <button onclick="InputUserToMongo()" type = "button" class = "btn btn-block" float = "left" style = "color:darkslategray"  >register</button>
- -->
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required id="password_reg">
+
+            <label for="doctor"> I am a Doctor</label>
+            <input type="checkbox"  name="doctor" style="margin-bottom:15px" id="doctor">
+
+
+            <div class="clearfix">
+                <button class="btn-block" type="submit" id="register">Sign Up</button>
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <h1> Login </h1>
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Email" name="uname" required id="email_log">
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required id="password_log">
+
+            <button class="btn-block" type="submit" id="submit">Login</button>
+        </div>
+    </div>
+</div>
+
+
+<footer class="page-footer font-small teal pt-4">
+    <div class="container-fluid text-center ">
+        <div class="row">
+            <div class="col-md-12 mt-md-0 mt-1">
+                <h5 class="text-uppercase font-weight-bold">Impressum</h5>
+                <p>Judith Becka und Felix Wenzel, Geosoftware 1, Projekt, j_beck60@uni-muenster.de f_wenz01@uni-muenster.de</p>
+            </div>
+        </div>
+        <div class="footer-copyright text-center py-3">© 2020 Copyright:
+            <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+        </div>
+</footer>
+
 </body>
 <script src="/jquery/jquery.js"></script>
+
 </html>
-
-
 <script src="public/LoginRegister.js"></script>
